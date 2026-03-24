@@ -7,13 +7,13 @@ sshUser: string;
 const config = {
 nodes: 
     [{
-        name: "optiplex-1",
+        name: "maurits-minion0",
         mac: "d8:9e:f3:7e:97:63", // change to real MAC
         ip: "192.168.0.101", // change to real IP
         sshUser: "mauflits",
     },
     {
-        name: "optiplex-2",
+        name: "maurits-minion1",
         mac: "d8:9e:f3:7e:9b:a3", // change to real MAC
         ip: "192.168.0.102", // change to real IP
         sshUser: "mauflits",
