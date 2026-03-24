@@ -8,15 +8,20 @@ return new Promise((resolve, reject) => {
 }
 
 export async function getAverageCPU(): Promise<number> {
-    const output = await run("kubectl top nodes --no-headers");
-    const lines = output.split("\n");
+  const output = await run("kubectl top nodes --no-headers");
+  const lines = output.split("\n");
+  let total = 0;
+  let count = 0;
 
-    const total = lines.reduce((sum, line) => {
-        const cpu = parseInt(line.trim().split(/\s+/)[2]?.replace("%", "") || "0");
-        return sum + cpu;
-    }, 0);
+  for (const line of lines) {
+    const cpu = parseInt(line.trim().split(/\s+/)[2]?.replace("%", "") || "");
+    if (!isNaN(cpu)) {
+      total += cpu;
+      count++;
+    }
+  }
 
-    return total / lines.length;
+  return count > 0 ? total / count : 0;
 }
 
 export async function isNodeReady(name: string): Promise<boolean> {
