@@ -18,10 +18,10 @@ nodes:
         ip: "192.168.0.102", // change to real IP
         sshUser: "mauflits",
     }],
-        scaleUpThreshold: 50, // wake node when CPU > 70%
-        scaleDownThreshold: 20, // sleep node when CPU < 20%
+        scaleUpThreshold: 30, // wake node when CPU > 70%
+        scaleDownThreshold: 15, // sleep node when CPU < 20%
         cooldownSeconds: 120, // 5 min low before sleeping
-        checkIntervalSeconds: 30, // check every 30 sec
+        checkIntervalSeconds: 10, // check every 30 sec
 };
 
 export default config;
